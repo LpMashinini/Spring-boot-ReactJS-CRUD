@@ -34,7 +34,7 @@ jobs:
 
       - name: Build and test with Maven
         run: mvn -B clean verify
-        working-directory: ./Backend-SpringBoot
+        working-directory: ./Backend
 
       - name: Upload JAR artifact
         uses: actions/upload-artifact@v4
