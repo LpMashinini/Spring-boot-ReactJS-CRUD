@@ -46,7 +46,7 @@ jobs:
     needs: build
 
     steps:
-      - uses: actions/checout@v4
+      - uses: actions/checkout@v4
       - name: Download JAR artifact
         uses: actions/download-artifact@v4
         with:
