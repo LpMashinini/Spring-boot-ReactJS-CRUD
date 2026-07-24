@@ -62,9 +62,9 @@ jobs:
 
 
       - name: Build Docker image
-        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/springboot-react-fullstack:latest .
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/springboot-react-fullstack:latest -f Backend/Dockerfile ./Backend
 
       - name: Push Docker image
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/springboot-react-fullstack:latest
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/springboot-react-fullstack:latest -f Backend/Dockerfile ./Backend
 
 
