@@ -7,10 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000") //enable data sharing with frontend
 @RestController
 @RequestMapping("/api/v1/")
 public class EmployeeController {
@@ -46,6 +48,7 @@ public class EmployeeController {
         Employee employee = employeeRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User do not exist with id : " + id));
 
+        //save updated value to database
         employee.setFirstName(employeeDetails.getFirstName());
         employee.setLastName(employeeDetails.getLastName());
         employee.setEmailId(employeeDetails.getEmailId());
@@ -56,6 +59,20 @@ public class EmployeeController {
         return ResponseEntity.ok(updateEmployee);
     }
 
+    // delete employee
+    @DeleteMapping("/employee/{id}")
+    public ResponseEntity<Map<String, Boolean>> deleteEmployee(@PathVariable Long id){
+        Employee employee = employeeRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found with Id: " + id));
+
+
+        employeeRepository.delete(employee);
+
+        //returns a json response
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("deleted", Boolean.TRUE);
+        return ResponseEntity.ok(response);
+    }
 
 
 
