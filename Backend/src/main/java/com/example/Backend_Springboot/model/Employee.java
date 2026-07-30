@@ -15,6 +15,7 @@ import lombok.Setter;
 @Table(name = "employees")
 public class Employee {
 
+    //add constrains
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
