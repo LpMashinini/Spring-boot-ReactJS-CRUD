@@ -27,7 +27,7 @@ jobs:
         working-directory: ./Frontend
 
       - name: Run tests
-        run: npm test 
+        run: npm test -- --watchAll=false
         working-directory: ./Frontend
 
       - name: Build the React app
