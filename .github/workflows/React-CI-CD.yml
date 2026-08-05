@@ -61,5 +61,5 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/Springboot-frontend-react-app:latest -f Frontend/Dockerfile ./Frontend
-          docker push ${{ secrets.DOCKER_USERNAME }}/Springboot-frontend-react-app:latest
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/springboot-frontend-react-app:latest -f Frontend/Dockerfile ./Frontend
+          docker push ${{ secrets.DOCKER_USERNAME }}/springboot-frontend-react-app:latest
