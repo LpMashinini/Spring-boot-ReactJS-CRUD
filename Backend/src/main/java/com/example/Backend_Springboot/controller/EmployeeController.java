@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 
-@CrossOrigin(origins = "http://localhost:3000") //enable data sharing with frontend
+@CrossOrigin(origins = "http://localhost:3000") //enable data sharing with frontend or easy restrictions on our frontend
 @RestController
 @RequestMapping("/api/v1/")
 public class EmployeeController {
