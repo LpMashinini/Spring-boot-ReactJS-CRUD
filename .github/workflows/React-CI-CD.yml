@@ -18,16 +18,24 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '24'
+          node-version: '20'
           cache: 'npm'
           cache-dependency-path: ./Frontend/package-lock.json
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
         working-directory: ./Frontend
 
       - name: Run tests
         run: npm test
+        working-directory: ./Frontend
+
+      - name: Debug Vite build
+        run: |
+          echo "Node version:"
+          node -v
+          echo "NPM version:"
+          npm -v
         working-directory: ./Frontend
 
       - name: Build the React app
