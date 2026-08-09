@@ -1,15 +1,10 @@
 services:
 
   Employee_backend:
-    build: 
-      context: ../Backend
-      dockerfile: Dockerfile
     image: lebogangmashinini9611/springboot-react-fullstack:latest
     container_name: Employee_backend
     ports:
       - "8080:8080"
-    volumes:
-      - ./Backend:/Backend
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://Employee_mysql:3306/employee_management_system
       SPRING_DATASOURCE_USERNAME: root
@@ -18,15 +13,10 @@ services:
       - Employee_mysql
 
   Employee_frontend:
-    build:
-      context: .
-      dockerfile: Dockerfile
     image: lebogangmashinini9611/springboot-frontend-react-app:latest
     container_name: Employee_frontend
     ports:
       - "80:80"
-    volumes:
-      - ./Frontend:/usr/share/nginx/html
     depends_on:
       - Employee_backend
 
