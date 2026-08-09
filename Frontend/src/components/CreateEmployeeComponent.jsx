@@ -7,7 +7,7 @@ const CreateEmployeeComponent = () => {
   const [lastName, setLastName] = useState('');
   const [emailId, setEmailId] = useState('');
 
-  const navigate = useNavigate();   // ✅ useNavigate instead of useHistory
+  const navigate = useNavigate();  
   const { id } = useParams();
 
   useEffect(() => {
@@ -29,11 +29,11 @@ const CreateEmployeeComponent = () => {
 
     if (id === '_add') {
       EmployeeService.createEmployee(employee)
-        .then(() => navigate('/employees'))   // ✅ navigate instead of history.push
+        .then(() => navigate('/employees'))   
         .catch(err => console.error('Error creating employee:', err));
     } else {
       EmployeeService.updateEmployee(employee, id)
-        .then(() => navigate('/employees'))   // ✅ navigate instead of history.push
+        .then(() => navigate('/employees'))  
         .catch(err => console.error('Error updating employee:', err));
     }
   };

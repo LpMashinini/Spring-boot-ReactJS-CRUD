@@ -4,7 +4,7 @@ import EmployeeService from '../services/EmployeeService';
 
 const ListUserComponents = () => {
   const [employees, setEmployees] = useState([]);
-  const navigate = useNavigate();   // ✅ useNavigate instead of useHistory
+  const navigate = useNavigate();   
 
   useEffect(() => {
     EmployeeService.getEmployees().then((response) => {
