@@ -1,18 +1,12 @@
-FROM eclipse-temurin:21.0.8_9-jdk-jammy AS builder
+# Stage 1: Build
+FROM maven:3.9.6-eclipse-temurin-21 AS build
 WORKDIR /Backend
+COPY . .
+RUN mvn clean package -DskipTests
 
-COPY .mvn/ .mvn
-COPY mvnw pom.xml ./
-RUN chmod +x ./mvnw
-RUN ./mvnw dependency:go-offline
-
-COPY src ./src
-RUN ./mvnw clean package -DskipTests
-
-FROM eclipse-temurin:21.0.8_9-jre-jammy AS final
+# Stage 2: Runtime
+FROM eclipse-temurin:21-jdk
 WORKDIR /Backend
+COPY --from=build /Backend/target/*.jar app.jar
 EXPOSE 8080
-
-COPY --from=builder /Backend/target/*.jar SpringBoot-backend.jar
-
-ENTRYPOINT ["java", "-jar", "SpringBoot-backend.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
