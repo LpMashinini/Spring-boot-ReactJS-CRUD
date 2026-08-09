@@ -19,7 +19,7 @@ const EmployeeService = {
 
     getEmployeeById(employeeId) {
 
-        return axios.get(`${EMPLOYEE_API_BASE_URL}/${employee}`)
+        return axios.get(`${EMPLOYEE_API_BASE_URL}/${employeeId}`)
 
     },
 
