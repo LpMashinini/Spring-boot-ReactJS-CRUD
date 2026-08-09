@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import EmployeeService from '../services/EmployeeService';
 
 const CreateEmployeeComponent = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [emailId, setEmailId] = useState('');
-  
-  const history = useHistory();
+
+  const navigate = useNavigate();   // ✅ useNavigate instead of useHistory
   const { id } = useParams();
 
   useEffect(() => {
@@ -29,16 +29,16 @@ const CreateEmployeeComponent = () => {
 
     if (id === '_add') {
       EmployeeService.createEmployee(employee)
-        .then(() => history.push('/employees'))
+        .then(() => navigate('/employees'))   // ✅ navigate instead of history.push
         .catch(err => console.error('Error creating employee:', err));
     } else {
       EmployeeService.updateEmployee(employee, id)
-        .then(() => history.push('/employees'))
+        .then(() => navigate('/employees'))   // ✅ navigate instead of history.push
         .catch(err => console.error('Error updating employee:', err));
     }
   };
 
-  const cancel = () => history.push('/employees');
+  const cancel = () => navigate('/employees');
 
   const getTitle = () => (
     <h3 className="text-center">
