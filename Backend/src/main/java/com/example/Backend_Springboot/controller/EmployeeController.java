@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 
-@CrossOrigin(origins = "http://localhost:3000") //enable data sharing with frontend or easy restrictions on our frontend
+@CrossOrigin(origins = "http://localhost") //enable data sharing with frontend or easy restrictions on our frontend
 @RestController
 @RequestMapping("/api/v1/")
 public class EmployeeController {
@@ -60,7 +60,7 @@ public class EmployeeController {
     }
 
     // delete employee
-    @DeleteMapping("/employee/{id}")
+    @DeleteMapping("/employees/{id}")
     public ResponseEntity<Map<String, Boolean>> deleteEmployee(@PathVariable Long id){
         Employee employee = employeeRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with Id: " + id));

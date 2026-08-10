@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 
-const EMPLOYEE_API_BASE_URL = 'http://localhost:8080/api/V1/employees'
+const EMPLOYEE_API_BASE_URL = '/api/v1/employees';
 
 const EmployeeService = {
 
@@ -19,7 +19,7 @@ const EmployeeService = {
 
     getEmployeeById(employeeId) {
 
-        return axios.get(`${EMPLOYEE_API_BASE_URL}/${employee}`)
+        return axios.get(`${EMPLOYEE_API_BASE_URL}/${employeeId}`)
 
     },
 

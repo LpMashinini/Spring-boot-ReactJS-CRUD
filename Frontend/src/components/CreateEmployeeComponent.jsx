@@ -32,7 +32,7 @@ const CreateEmployeeComponent = () => {
         .then(() => navigate('/employees'))   
         .catch(err => console.error('Error creating employee:', err));
     } else {
-      EmployeeService.updateEmployee(employee, id)
+      EmployeeService.updateEmployee(id, employee)
         .then(() => navigate('/employees'))  
         .catch(err => console.error('Error updating employee:', err));
     }

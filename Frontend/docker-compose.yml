@@ -1,7 +1,7 @@
 services:
 
   Employee_backend:
-    image: ${DOCKER_USERNAME}/springboot-react-fullstack:latest
+    image: lebogangmashinini9611/springboot-react-fullstack:latest
     container_name: Employee_backend
     ports:
       - "8080:8080"
@@ -13,7 +13,7 @@ services:
       - Employee_mysql
 
   Employee_frontend:
-    image: ${DOCKER_USERNAME}/springboot-frontend-react-app:latest
+    image: lebogangmashinini9611/springboot-frontend-react-app:latest
     container_name: Employee_frontend
     ports:
       - "80:80"

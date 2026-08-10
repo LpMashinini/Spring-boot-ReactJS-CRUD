@@ -6,12 +6,25 @@ const ListUserComponents = () => {
   const [employees, setEmployees] = useState([]);
   const navigate = useNavigate();   
 
-  useEffect(() => {
-    EmployeeService.getEmployees().then((response) => {
-      setEmployees(response.data);
-    });
-  }, []);
+useEffect(() => {
+    EmployeeService.getEmployees()
+        .then((response) => {
+            console.log("Full API response:", response);
+            console.log("API data:", response.data);
+            console.log("Is array:", Array.isArray(response.data));
 
+            if (Array.isArray(response.data)) {
+                setEmployees(response.data);
+            } else {
+                console.error("Expected an array but received:", response.data);
+                setEmployees([]);
+            }
+        })
+        .catch((error) => {
+            console.error("Error fetching employees:", error);
+            setEmployees([]);
+        });
+}, []);
   const addEmployee = () => {
     navigate('/add-employee/_add');
   };
