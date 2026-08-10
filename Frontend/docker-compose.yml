@@ -2,7 +2,7 @@ services:
 
   Employee_backend:
     image: lebogangmashinini9611/springboot-react-fullstack:latest
-    container_name: Employee_backend
+    container_name: Employee-backend
     ports:
       - "8080:8080"
     environment:
@@ -10,19 +10,19 @@ services:
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
     depends_on:
-      - Employee_mysql
+      - Employee-mysql
 
   Employee_frontend:
     image: lebogangmashinini9611/springboot-frontend-react-app:latest
-    container_name: Employee_frontend
+    container_name: Employee-frontend
     ports:
       - "80:80"
     depends_on:
-      - Employee_backend
+      - Employee-backend
 
   Employee_mysql:
     image: mysql:8.0
-    container_name: Employee_mysql
+    container_name: Employee-mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: employee_management_system
