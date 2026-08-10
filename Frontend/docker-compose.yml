@@ -1,6 +1,6 @@
 services:
 
-  Employee_backend:
+  Employee-backend:
     image: lebogangmashinini9611/springboot-react-fullstack:latest
     container_name: Employee-backend
     ports:
@@ -12,7 +12,7 @@ services:
     depends_on:
       - Employee-mysql
 
-  Employee_frontend:
+  Employee-frontend:
     image: lebogangmashinini9611/springboot-frontend-react-app:latest
     container_name: Employee-frontend
     ports:
@@ -20,7 +20,7 @@ services:
     depends_on:
       - Employee-backend
 
-  Employee_mysql:
+  Employee-mysql:
     image: mysql:8.0
     container_name: Employee-mysql
     environment:
