@@ -14,5 +14,6 @@ A full-stack **CRUD Employee Management Project** built with:
 - Responsive React frontend
 - Integrated CI/CD pipeline using GitHub Actions
 - Dockerized backend and frontend for easy deployment
+- Nginx Reverse Proxy
 
 ---
